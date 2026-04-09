@@ -50,13 +50,13 @@ export function Stats() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-             <div key={i} className="h-32 bg-[#18181A] border border-white/5 rounded-xl animate-pulse" />
+             <div key={i} className="h-32 bg-card border border-border rounded-xl animate-pulse shadow-sm" />
           ))}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {statCards.map((stat, i) => (
-            <div key={i} className="bg-[#18181A] border border-white/5 rounded-xl p-6 transition-all hover:border-primary/50 relative overflow-hidden">
+            <div key={i} className="bg-card text-card-foreground border border-border rounded-xl p-6 transition-all hover:border-primary/50 relative overflow-hidden shadow-sm">
               <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-5">
                 <stat.icon className="w-32 h-32" />
               </div>

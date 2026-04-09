@@ -44,12 +44,12 @@ export const FileCard = ({ file, onDownload, onDelete }: FileCardProps) => {
       exit={{ opacity: 0, scale: 0.9 }}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="glass-card group relative p-5 rounded-2xl flex flex-col gap-4 overflow-hidden"
+      className="glass-card group relative p-5 rounded-2xl flex flex-col gap-4 overflow-hidden bg-card text-card-foreground"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <div className="flex items-start justify-between z-10">
-        <div className="p-3 bg-white/5 rounded-xl">
+        <div className="p-3 bg-primary/10 rounded-xl">
           {getFileIcon(file.name)}
         </div>
         <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -57,7 +57,7 @@ export const FileCard = ({ file, onDownload, onDelete }: FileCardProps) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => onDownload(file.name)}
-            className="p-2 rounded-full bg-white/5 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+            className="p-2 rounded-full bg-primary/10 text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
           >
             <Download className="w-5 h-5" />
           </motion.button>
@@ -65,7 +65,7 @@ export const FileCard = ({ file, onDownload, onDelete }: FileCardProps) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => onDelete(file.name)}
-            className="p-2 rounded-full bg-white/5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+            className="p-2 rounded-full bg-destructive/10 text-muted-foreground hover:text-destructive hover:bg-destructive/20 transition-colors"
           >
             <Trash2 className="w-5 h-5" />
           </motion.button>

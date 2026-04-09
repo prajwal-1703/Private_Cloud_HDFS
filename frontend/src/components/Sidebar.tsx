@@ -18,12 +18,12 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside className="glass hidden lg:flex flex-col w-64 h-[calc(100vh-2rem)] sticky top-4 rounded-2xl ml-4 overflow-hidden border border-white/5">
+    <aside className="glass hidden lg:flex flex-col w-64 h-[calc(100vh-2rem)] sticky top-4 rounded-2xl ml-4 overflow-hidden border border-border">
       <div className="p-6 flex items-center gap-3">
         <div className="p-2 bg-primary/20 rounded-xl">
           <Cloud className="h-6 w-6 text-primary" />
         </div>
-        <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+        <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           MyCloud
         </span>
       </div>

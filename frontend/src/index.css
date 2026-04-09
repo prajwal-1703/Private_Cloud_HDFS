@@ -90,9 +90,9 @@
 }
 
 .glass {
-  @apply bg-white/5 dark:bg-black/20 backdrop-blur-xl border border-white/10 dark:border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  @apply bg-card/60 backdrop-blur-xl border border-border shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
 }
 
 .glass-card {
-  @apply bg-card/60 backdrop-blur-xl border border-border/50 shadow-lg dark:shadow-none;
+  @apply bg-card/60 backdrop-blur-xl border border-border shadow-sm dark:shadow-none;
 }

@@ -27,7 +27,7 @@ export const UploadBox = ({ onUpload, isUploading, progress }: UploadBoxProps) =
       <div 
         {...getRootProps()} 
         className={`glass-card relative overflow-hidden rounded-2xl border-2 border-dashed p-8 transition-all duration-300 ease-in-out cursor-pointer
-          ${isDragActive ? 'border-primary bg-primary/5' : 'border-white/10 hover:border-primary/50'}
+          ${isDragActive ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}
           ${isUploading ? 'opacity-50 cursor-not-allowed' : ''}
         `}
       >
