@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+
+  # ---------------- HDFS NAMENODE ----------------
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: cloud_namenode
+    environment:
+      - CLUSTER_NAME=cloud-cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    ports:
+      - "9871:9870"   # HDFS UI
+      - "9001:9000"   # HDFS RPC
+    volumes:
+      - namenode_data:/hadoop/dfs/name
+
+  # ---------------- HDFS DATANODE ----------------
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: cloud_datanode
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - SERVICE_PRECONDITION=namenode:9870
+    volumes:
+      - datanode_data:/hadoop/dfs/data
+    depends_on:
+      - namenode
+
+  # ---------------- FRONTEND (REACT APP) ----------------
+  frontend:
+    image: dev1703/cloud-frontend:latest
+    container_name: cloud_frontend
+    # Internal port only, nginx forwards to it. 
+    # Not mapping a public port to strictly follow "dont mess with port numbers"
+
+  # ---------------- BACKEND (FLASK) ----------------
+  backend:
+    image: dev1703/cloud-backend:latest
+    container_name: cloud_backend
+    environment:
+      - HDFS_URL=http://namenode:9870
+      - HDFS_USER=root
+    ports:
+      - "5001:5000"
+    volumes:
+      - backend_data:/app/data
+    depends_on:
+      - namenode
+
+  # ---------------- NGINX (REVERSE PROXY) ----------------
+  nginx:
+    image: nginx:latest
+    container_name: cloud_nginx
+    ports:
+      - "8082:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+
+# ---------------- VOLUMES ----------------
+volumes:
+  namenode_data:
+  datanode_data:
+  backend_data:

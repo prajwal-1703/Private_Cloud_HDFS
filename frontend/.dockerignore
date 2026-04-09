@@ -1,0 +1,6 @@
+node_modules
+.tmp
+.vite
+dist
+build.log
+.vscode

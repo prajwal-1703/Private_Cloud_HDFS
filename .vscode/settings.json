@@ -1,0 +1,1 @@
+{ "files.exclude": { "**/node_modules": true, "**/.vite": true, "**/.tmp": true, "**/dist": true, "**/build.log": true } }
